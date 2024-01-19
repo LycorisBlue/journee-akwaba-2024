@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    background-color: #f77f00;
+    padding: 20px;
+}
+
+p {
+    text-align: justify;
+    margin: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin: 10px;
+}
+
+.logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.logos img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}

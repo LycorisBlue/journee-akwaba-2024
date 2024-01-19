@@ -1,0 +1,241 @@
+
+<head>
+    <meta charset="UTF-8">
+    <title>Journée AKWABA</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+
+    <html>
+        <head>
+          <style>
+            * {
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+            }
+        
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f0f0f0;
+            }
+        
+            .container {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+        
+            .logo {
+              width: 200px;
+              display: block;
+              margin: 0 auto;
+            }
+        
+            .title {
+              text-align: center;
+              font-size: 36px;
+              color: #333;
+              margin-bottom: 20px;
+            }
+        
+            .subtitle {
+              text-align: center;
+              font-size: 24px;
+              color: #666;
+              margin-bottom: 40px;
+            }
+        
+            .info {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+            }
+        
+            .info-item {
+              width: 48%;
+              background-color: #fff;
+              border: 1px solid #ccc;
+              padding: 10px;
+            }
+        
+            .info-item h3 {
+              font-size: 18px;
+              color: #333;
+              margin-bottom: 10px;
+            }
+        
+            .info-item p {
+              font-size: 14px;
+              color: #666;
+              line-height: 1.5;
+            }
+        
+            .info-item ul {
+              list-style: none;
+            }
+        
+            .info-item li {
+              font-size: 14px;
+              color: #666;
+              margin-bottom: 5px;
+            }
+        
+            .carousel {
+              width: 100%;
+              height: 300px;
+              overflow: hidden;
+              position: relative;
+            }
+        
+            .carousel-images {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: row;
+              transition: transform 0.5s ease;
+            }
+        
+            .carousel-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+        
+            .carousel-button {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background-color: rgba(255, 255, 255, 0.5);
+              border: none;
+              outline: none;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+            }
+        
+            .carousel-button-left {
+              left: 10px;
+            }
+        
+            .carousel-button-right {
+              right: 10px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <img src="LOGO.jpg" alt="Logo de l'AUPROHADA" class="logo">
+            <h1 class="title">Journée  Akwaba aux nouveaux bacheliers</h1>
+            <h2 class="subtitle">Le 23 Janvier 2024 au campus HETEC ABIDJAN</h2>
+            <div class="info">
+              <div class="info-item">
+                <h3>Le thème: OSONS REVER</h3>
+                <p>La journée de l'« Akwaba aux nouveaux bacheliers » a pour thème : « Comment réussir son cursus universitaire ? »</p>
+                <p>Cette journée vise à accueillir, informer, orienter et échanger avec les nouveaux étudiants en droit, à leur inculquer les valeurs que doit arborer l'étudiant juriste et à leur faire découvrir l'OHADA, l'organisation pour l'harmonisation en Afrique du droit des affaires.</p>
+              </div>
+              <div class="info-item">
+                <h3>Les sponsors et partenaires</h3>
+                <ul>
+                  <li>L'Université Nord-Sud</li>
+                  <li>Le Conseil National des Droits de l'Homme</li>
+                  <li>L'Association Universitaire pour la Promotion de l'OHADA</li>
+                  <li>Le Club OHADA</li>
+                  <li>Le Concours Génie en Herbe OHADA</li>
+                </ul>
+              </div>
+            </div>
+            <div class="carousel">
+              <div class="carousel-images">
+                <img src="1.jpg" alt="Image 1" class="carousel-image">
+                <img src="2.jpg" alt="Image 2" class="carousel-image">
+                <img src="3.jpg" alt="Image 3" class="carousel-image">
+              </div>
+              <button class="carousel-button carousel-button-left">&lt;</button>
+              <button class="carousel-button carousel-button-right">&gt;</button>
+            </div>
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+          <script>
+            // GSAP animation
+            gsap.from('.logo', {opacity: 0, y: -100, duration: 1});
+            gsap.from('.title', {opacity: 0, x: -100, duration: 1, delay: 0.5});
+            gsap.from('.subtitle', {opacity: 0, x: 100, duration: 1, delay: 1});
+            gsap.from('.info-item', {opacity: 0, scale: 0.5, duration: 1, delay: 1.5, stagger: 0.5});
+            gsap.from('.carousel', {opacity: 0, y: 100, duration: 1, delay: 3});
+        
+            // Carousel logic
+            const carouselImages = document.querySelector('.carousel-images');
+            const carouselButtons = document.querySelectorAll('.carousel-button');
+            const numberOfImages = document.querySelectorAll('.carousel-image').length;
+            let imageIndex = 1;
+            let translateX = 0;
+        
+            carouselButtons.forEach(button => {
+              button.addEventListener('click', (event) => {
+                if (event.target.id === 'previous') {
+                  if (imageIndex !== 1) {
+                    imageIndex--;
+                    translateX += 800;
+                  }
+                } else {
+                  if (imageIndex !== numberOfImages) {
+                    imageIndex++;
+                    translateX -= 800;
+                  }
+                }
+        
+                carouselImages.style.transform = `translateX(${translateX}px)`;
+              });
+            });
+          </script>
+        </body>
+        </html>
+        
+
+
+
+
+
+
+
+    <div class="container">
+        <h1>Journée AKWABA</h1>
+        <p>La journée AKWABA est un événement organisé par l'association des étudiants ivoiriens de l'Université de Abobo. C'est une occasion de célébrer la culture, la diversité et la solidarité ivoirienne.</p>
+        <p>Le thème de cette année est : <strong>"La Côte d'Ivoire, une terre d'opportunités"</strong>.</p>
+        <p>La date de la journée est le <strong>samedi 10 février 2024</strong>.</p>
+        <p>Le programme de la journée est le suivant :</p>
+        <ul>
+            <li>9h00 : Accueil des participants</li>
+            <li>10h00 : Conférence sur le thème de la journée</li>
+            <li>12h00 : Pause déjeuner</li>
+            <li>14h00 : Ateliers culturels et artistiques</li>
+            <li>16h00 : Spectacle de danse et de musique</li>
+            <li>18h00 : Remise des prix et des diplômes</li>
+            <li>19h00 : Cocktail de clôture</li>
+        </ul>
+        <p>Nous remercions nos sponsors et partenaires qui ont rendu possible cette journée :</p>
+        <div class="logos">
+            <img src="LOGO.jpg" alt="Logo du sponsor 1">
+            <img src="LOGO.jpg" alt="Logo du sponsor 2">
+            <img src="LOGO.jpg" alt="Logo du partenaire 1">
+            <img src="LOGO.jpg" alt="Logo du partenaire 2">
+        </div>
+        <p>Pour en savoir plus sur l'histoire de l'association, vous pouvez consulter le lien suivant :</p>
+        <a href="historique.html">Historique de l'association</a>
+        <p>Vous pouvez également nous contacter via nos réseaux sociaux :</p>
+        <div class="contacts">
+            <a href="https://www.facebook.com/asso.akwaba"><img src="facebook.png" alt="Facebook"></a>
+            <a href="mailto:asso.akwaba@gmail.com"><img src="gmail.png" alt="Gmail"></a>
+            <a href="https://wa.me/+22501234567"><img src="whatsapp.png" alt="WhatsApp"></a>
+        </div>
+        <p>Enfin, vous pouvez scanner le code QR ci-dessous pour accéder au site web de la journée AKWABA :</p>
+        <img src="qrcode.png" alt="Code QR">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
